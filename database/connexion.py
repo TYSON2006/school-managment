@@ -69,4 +69,4 @@ curseur.execute("""
 connection.commit()
 connection.close()
 
-print("Base de données initialisée avec succès ✅")
+print("Base de données initialisée avec succès ")

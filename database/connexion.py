@@ -1,21 +1,31 @@
 
 import sqlite3
 
-connection = sqlite3.connect("terminal.db")
-curseur = connection.cursor()
+class MESDONNÉES():
+    def __init__(self):
+        self.connexion = sqlite3.connect("terminal.db")
+        self.curseur = self.connexion.cursor()
 
-# USERS
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS users(
+        self.connexion.commit()
+
+
+
+    # creation de la table  users
+    def users(self):
+        self.curseur.execute("""
+   CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
         role TEXT NOT NULL
     )
-""")
+       """ )
+        
 
-# STUDENTS
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS students(
+
+    # création de la table  students
+    def students(self):
+        self.curseur.execute("""
+ CREATE TABLE IF NOT EXISTS students(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         matricule INTEGER NOT NULL,
         nom TEXT NOT NULL,
@@ -23,30 +33,43 @@ curseur.execute("""
         age INTEGER NOT NULL,
         classe TEXT
     )
-""")
+                             """)
 
-# TEACHERS
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS teachers(
+
+
+# creation de la table teachers 
+    
+    def teachers(self):
+        self.curseur.execute("""
+  CREATE TABLE IF NOT EXISTS teachers(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
         matiere TEXT NOT NULL
     )
-""")
+                             """)
+        
 
-# SUBJECTS
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS subjects(
+
+
+
+    # creationde la table subject
+
+    def subject(self):
+        self.curseur.execute("""
+ CREATE TABLE IF NOT EXISTS subjects(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
         teacher_id INTEGER NOT NULL,
         FOREIGN KEY (teacher_id) REFERENCES teachers(id)
     )
-""")
+                             """)
+        
 
-# GRADES
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS grades(
+        # creationde la table grades 
+
+    def grades(self):
+        self.curseur.execute("""
+ CREATE TABLE IF NOT EXISTS grades(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         student_id INTEGER NOT NULL,
         subject_id INTEGER NOT NULL,
@@ -54,19 +77,17 @@ curseur.execute("""
         FOREIGN KEY (student_id) REFERENCES students(id),
         FOREIGN KEY (subject_id) REFERENCES subjects(id)
     )
-""")
+                             """)
+        
+        # creation de la table absences
 
-# ABSENCES
-curseur.execute("""
-    CREATE TABLE IF NOT EXISTS absences(
+    def absences(self):
+        self.curseur.execute("""
+ CREATE TABLE IF NOT EXISTS absences(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         student_id INTEGER NOT NULL,
         date TEXT NOT NULL,
         status TEXT
     )
-""")
-
-connection.commit()
-connection.close()
-
-print("Base de données initialisée avec succès ")
+                             """)
+            

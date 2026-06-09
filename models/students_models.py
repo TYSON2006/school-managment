@@ -23,3 +23,9 @@ MENU_STUDENTS = """
 
 
 """
+
+
+while True:
+    print("MENU_STUDENTS")
+    choix = input("votre choix:")
+    

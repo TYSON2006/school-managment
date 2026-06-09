@@ -11,6 +11,15 @@ class globaUsers(MESDONNÉES):
 
 
 
+
+        #verrification
+    def verification(self,nom,passeword):
+        self.curseur.execute("""
+                            SELECT * FROM users WHERE nom = ? AND  passeword = ? 
+                             """,(nom,passeword))
+
+
+
         #ajout
 
 
@@ -58,3 +67,7 @@ class globaUsers(MESDONNÉES):
         DELETE FROM users WHERE id = ?
        """,(id) )
         self.connexion.commit()
+
+
+    def  close(self):
+        self.connexion.close()

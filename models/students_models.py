@@ -1,31 +1,87 @@
-from models.users_models import globaUsers
-
-students = globaUsers()
-
-MENU_STUDENTS = """
-
- 
-╔══════════════════════════════════════════════╗
-║           GESTION DES ÉTUDIANTS             ║
-╠══════════════════════════════════════════════╣
-║  1  ➜ Ajouter un étudiant                   ║
-║  2  ➜ Afficher tous les étudiants           ║
-║  3  ➜ Rechercher un étudiant                ║
-║  4  ➜ Modifier un étudiant                  ║
-║  5  ➜ Supprimer un étudiant                 ║
-╠══════════════════════════════════════════════╣
-║  6  ➜ Nombre total d'étudiants              ║
-║  7  ➜ Afficher les étudiants par classe     ║
-╠══════════════════════════════════════════════╣
-║  0  ➜ Quitter                               ║
-╚══════════════════════════════════════════════╝
+from database.connexion import MESDONNÉES
 
 
 
-"""
+class students_using(MESDONNÉES):
+    def __int__(self):
+        super().__init__()
 
 
-while True:
-    print("MENU_STUDENTS")
-    choix = input("votre choix:")
+
+    def students_bord(self):
+        self.curseur.execute("""
+CREATE TABLE IF NOT EXISTS  students(
+                               id PREMARY KEY AUTOINCREMENT,
+                               nom TEXT NOT NULL,
+                               prenom TEXT  NOT NULL,
+                               age INTEGER NOT NULL,
+                               classe TEXT NOT  NULL,
+                               matricule TEXT NOT NULL
+                               )
+       """ )
+        self.connexion.commit()
+
+
+
+
+
+#ajouter 
+
+    def ajouter(self,nom,prenom,age,matricule,classe):
+        self.curseur.execute("""
+INSERT INTO students (nom,prenom,age,matricule,classe) VALUES (?,?,?,?,?)
+                               """,(nom,prenom,age,matricule,classe))
+        self.connexion.commit()
+
+
+
+#update
+
+    def modifier(self,id,age,nom,matricule):
+        self.curseur.execute("""
+            UPDATE teachers  SET ,
+             nom = ?, 
+            WHERE id = ?,
+            matricule = ?,
+            age = ?        
+                               """,(nom,age,id,matricule))
+        self.connexion.commit()
+
+
+
+#verification
+
+    def verifier(self,nom,passeword):
+        self.curseur.execute("""
+SELECT FROM * WHERE nom =? passeword = ?
+                             """,(nom,passeword))
+        self.connexion.commit()
+
+
+
+
+#  afficher 
+
+    def afficher(self,id):
+        self.curseur.execute("""
+SELECT * FROM students
+                             """)
+        return self.curseur.fetchone()
     
+
+
+
+
+
+
+ # supprimer 
+    def  supprimer(self,id):
+        self.curseur.execute("""
+  DELETE FROM teachers WHERE id = ?
+                             """,(id))
+        self.connexion.commit()
+        self.connexion.close()
+
+    
+
+

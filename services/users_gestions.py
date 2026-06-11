@@ -7,7 +7,7 @@ class gestion:
     def __init__(self):
         self.students=students_using()
         self.teachers=Teach_using()
-        self.G_users=globaUsers()
+        self.users=globaUsers()
 
 
 
@@ -25,7 +25,8 @@ menu_utilisateur = """
 =========================================
 """
 
+def ajout_users(self,nom,prenom):
+    nom = input("nom:")
+    prenom = input("prenom:") 
 
-
-def ajout_users(self):
     

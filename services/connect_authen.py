@@ -12,7 +12,7 @@ def connet_users():
         print(menu_akwaba)
         nom = input("entrer votre nom :")
         passeword = input("ecrivez votre mot de pass:")
-        liaison = globaUsers
+        liaison = globaUsers()
         liaison.users()
         compte = liaison.verification(nom,passeword)
         liaison.close()
@@ -22,12 +22,12 @@ def connet_users():
             print(f"akwaba MR {nom_users} votre role est {role_users}")
             return role_users
         else:
-            print("erreur nom et mot de passe non valide merci de ressayer")
+            print("merci d'être passé.")
             sys.exit()
 
 
 
     elif choix == '2':
-        print(" merci d'être passer ")
+        print(" merci d'être passé ")
         return
 

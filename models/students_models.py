@@ -44,18 +44,12 @@ INSERT INTO students (nom,prenom,age,matricule,classe) VALUES (?,?,?,?,?)
             WHERE id = ?,
             matricule = ?,
             age = ?        
-                               """,(nom,age,id,matricule))
+                               """,(nom,age,matricule,id))
         self.connexion.commit()
 
 
 
-#verification
 
-    def verifier(self,nom,passeword):
-        self.curseur.execute("""
-SELECT FROM * WHERE nom =? passeword = ?
-                             """,(nom,passeword))
-        self.connexion.commit()
 
 
 
@@ -72,13 +66,25 @@ SELECT * FROM students
 
 
 
+# rechercher 
+
+    def rechercher(self,id):
+        self.curseur.execute("""
+    SELCT * FROM students WHERE   id = ? 
+
+       """ (id,))
+        self.curseur.fetchone()    
+
+
+
+
 
 
  # supprimer 
     def  supprimer(self,id):
         self.curseur.execute("""
   DELETE FROM teachers WHERE id = ?
-                             """,(id))
+                             """,(id,))
         self.connexion.commit()
         self.connexion.close()
 

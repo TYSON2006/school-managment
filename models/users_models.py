@@ -17,6 +17,7 @@ class globaUsers(MESDONNÉES):
         self.curseur.execute("""
                             SELECT * FROM users WHERE nom = ? AND  passeword = ? 
                              """,(nom,passeword))
+        return self.curseur.fetchone()
 
 
 
@@ -24,10 +25,10 @@ class globaUsers(MESDONNÉES):
 
 
 
-    def ajouter(self, nom, role):
+    def ajouter(self, nom, role, passeword):
         self.curseur.execute(
-            "INSERT INTO users(nom, role) VALUES (?, ?)",
-            (nom, role)
+            "INSERT INTO users(nom, passeword, role) VALUES (?,?,?)",
+            (nom, passeword, role)
         )
         self.connexion.commit()
 
@@ -36,11 +37,11 @@ class globaUsers(MESDONNÉES):
         # afficher
 
 
-    def  affcicher (self,id):
+    def  affcicher (self):
         self.curseur.execute(
             "SELECT * FROM users"
         )
-        return self.curseur.fetchone()
+        return self.curseur.fetchall()
          
     
 
@@ -64,7 +65,7 @@ class globaUsers(MESDONNÉES):
         # delete 
     def supprimer(self,id):
         self.curseur.execute(""""
-        DELETE FROM users WHERE id = ?
+        DELETE FROM users WHERE id = ?,
        """,(id) )
         self.connexion.commit()
 

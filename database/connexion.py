@@ -5,9 +5,9 @@ class MESDONNÉES():
     def __init__(self):
         self.connexion = sqlite3.connect("terminal.db")
         self.curseur = self.connexion.cursor()
+        
 
         self.connexion.commit()
-
 
 
     # creation de la table  users
@@ -16,7 +16,8 @@ class MESDONNÉES():
    CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
-        role TEXT NOT NULL
+        role TEXT NOT NULL,
+        passeword TEXT NOT NULL      
     )
        """ )
         

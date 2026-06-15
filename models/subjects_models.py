@@ -40,10 +40,40 @@ CREATE TABLE IF NOT EXISTS subject(
 SELCT * FROM WHERE  matiere = ?
                              """,(matiere))
         self.connexion.commit()
+
+
+
+
+
+
+#affciher 
+
+    def afficher(self,matiere):
+        self.curseur.execute("""
+SELECT * FROM WHERE matiere = ?
+                             """)
+        return self.curseur.fetchall()
+    
+
+
+
+#recherchere
+    def rechercher(self,matiere):
+        self.curseur.execute("""
+SELECT * FROM WHERE matiere = ?
+                             """)
+        self.connexion.commit()
+
+
+
+#supprimer
+
+
+    def supprimer(self,matiere):
+        self.curseur.execute("""
+DELETE FROM subject WHERE matiere = ?
+                             """,(matiere))
+        self.connexion.commit()
         self.connexion.close()
 
-        
-
-
-
-
+    

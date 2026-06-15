@@ -57,4 +57,19 @@ menu_teacher = """
 
 """
 
+menu_subjects = """
+==================================
+        GESTION DES MATIÈRES
+==================================
+  1. Ajouter une matière
+  2. Afficher toutes les matières
+  3. Rechercher une matière
+  4. Supprimer une matière
+  0. Retour
+==================================
+"""
+
+
+
+
 

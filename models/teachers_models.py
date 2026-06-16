@@ -5,6 +5,7 @@ from database.connexion import MESDONNÉES
 class Teach_using(MESDONNÉES):
     def __int__(self):
         super().__init__()
+        self.tech_bord
 
 
 

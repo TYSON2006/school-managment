@@ -5,6 +5,7 @@ from database.connexion import MESDONNÉES
 class students_using(MESDONNÉES):
     def __int__(self):
         super().__init__()
+        self.students_bord()
 
 
 
@@ -72,7 +73,7 @@ SELECT * FROM students
         self.curseur.execute("""
     SELCT * FROM students WHERE   id = ? 
 
-       """ (id,))
+       """, (id,))
         self.curseur.fetchone()    
 
 

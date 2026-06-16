@@ -3,6 +3,7 @@ from database.connexion import MESDONNÉES
 class grades_using(MESDONNÉES):
     def __init__(self):
         super().__init__()
+        self.grades_bord()
 
 
 
@@ -36,11 +37,11 @@ INSERT INTO grades (students_id,subjects_id,notes) VALUES (?,?,?)
         return True
     
     #afficher 
-    def affciher(self):
+    def afficher(self):
         self.curseur.execute("""
 SELECT * FROM grades
                              """)
-        return self.curseur.fetchall()
+        return self.curseur.fetchone()
     
 
 
@@ -51,7 +52,42 @@ SELECT *FROM WHERE id = ?
                              """,(id,))
         self.connexion.commit()
     
-    
+    #modifier
+    def modifier(self,id,note):
+        self.curseur.execute("""
+        UPDATE SET,
+        id = ?,
+        note = ?,
+        
+                             """,(note,id))
+        self.connexion.commit()
+
+
+    #supprimer
+    def supprimer(self,id):
+        self.curseur.execute("""
+DELETE  FROM grades WHERE     id = ?
+                             """,(id,))
+        self.connexion.commit()
+
+    #calcule de moyenne
+    def calculer(self,students_id):
+        self.curseur.execute("""
+SELECT note FROM grades WHERE students_id = ? 
+                             """,(students_id,))
+        notes = self.curseur.fetchall()
+
+        if not notes:
+            return 0
+        totale = 0
+        for note in notes:
+            totale += note[0]
+            moyenne = totale / len(notes)
+            return moyenne
+        
+
+
+        # self.connexion.close()
 
 
   

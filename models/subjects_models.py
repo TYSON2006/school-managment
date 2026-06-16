@@ -5,6 +5,7 @@ from database.connexion import MESDONNÉES
 class subject_using(MESDONNÉES):
     def __init__(self):
         super().__init__()
+        self.subject_bord()
 
 
 

@@ -41,7 +41,7 @@ menu_students="""
 
 
 
-menu_teacher = """
+menu_teachers = """
 
 ==================================
         ESPACE TEACHER
@@ -73,3 +73,40 @@ menu_subjects = """
 
 
 
+menu_grades = """
+
+
+==================================
+        GESTION DES NOTES
+==================================
+  1. Ajouter une note
+  2. Afficher toutes les notes
+  3. Rechercher une note
+  4. Modifier une note
+  5. Supprimer une note
+  6. Calculer la moyenne d'un étudiant
+  0. Retour
+==================================
+
+
+"""
+
+
+menu_absences  = """
+
+
+
+==================================
+       GESTION DES ABSENCES
+==================================
+  1. Ajouter une absence
+  2. Afficher toutes les absences
+  3. Rechercher une absence
+  4. Justifier une absence
+  5. Supprimer une absence
+  0. Retour
+==================================
+
+
+
+"""

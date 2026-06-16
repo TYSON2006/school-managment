@@ -1,10 +1,39 @@
 from services.connect_authen import connet_users
-
-
+from services.student_services import menu_students
+from services.teacher_service import menu_teacher
+from services.subjects_services import menu_subject
+from services.grades_services import menu_grades
 
 def main():
-    connet_users()
+    role = connet_users()
 
-
-if __name__ == "__main__":
+    while True:
+        print("""
+=========================================
+       SYSTÈME DE GESTION D'ÉCOLE
+=========================================
+  1. Gestion des étudiants
+  2. Gestion des professeurs
+  3. Gestion des matières
+  4. Gestion des notes
+  0. Quitter
+=========================================
+              """)
+        choix == print("faite un choix :").strip()
+        if choix == '1':
+            menu_students
+        elif choix == '2':
+            menu_teacher
+        elif choix == '3':
+            menu_subject
+        elif choix == '4':
+            menu_grades
+        elif choix == '0':
+            print("à bientô")
+            break
+        else:
+            print("choix invalide!")
+if __name__ == "__main__:"
     main()
+        
+

@@ -1,75 +1,66 @@
-from models.students_models import students_using 
-
-
-import          sys
-
-from config.menu  import menu_connexion,menu_students 
-
+from models.students_models import students_using
+from config.menu import menu_students
 
 def menu_students():
     db = students_using()
 
     while True:
-        print("""
-       
-==================================
-        GESTION DES ÉTUDIANTS
-==================================
-  1. Ajouter un étudiant
-  2. Afficher tous les étudiants
-  3. Rechercher un étudiant
-  4. Modifier un étudiant
-  5. Supprimer un étudiant
-  0. Retour
-==================================
-              """)
-        choix = input("faite un choix:").strip()
+        print(menu_students)
+
+        choix = input("Faites un choix : ").strip()
+
         if choix == '1':
-            nom = input("nom:")
-            prenom = input("prenom:")
-            age = input("age:")
-            matricule = input("matricule : ")
-            classe = input("classe :")
-            db.ajouter(nom,prenom,age,matricule,classe)
+            nom       = input("Nom : ")
+            prenom    = input("Prénom : ")
+            age       = int(input("Âge : "))
+            matricule = input("Matricule : ")
+            classe    = input("Classe : ")
+            db.ajouter(nom, prenom, age, matricule, classe)
+            print("Étudiant ajouté ")
+
         elif choix == '2':
             resultat = db.afficher()
             if not resultat:
-                print("aucun etudiant trouvé!")
+                print("Aucun étudiant trouvé!")
             else:
                 for row in resultat:
                     print(f"""
-        id :{row[0]}
-        matricule :{row[1]}
-        nom :{row[2]}
-        prenom :{row[3]}
-        age : {row[4]}
-        classe : {row[5]}
-                          """)
-                    print("merci d'être passé")
-                  
-        elif choix =='3':
-            id = int(input("id à rechercher:"))
-            etudiant = db.rechercher()
+        ID        : {row[0]}
+        Matricule : {row[1]}
+        Nom       : {row[2]}
+        Prénom    : {row[3]}
+        Âge       : {row[4]}
+        Classe    : {row[5]}
+                    """)
+
+        elif choix == '3':
+            id       = int(input("ID à rechercher : "))
+            etudiant = db.rechercher(id)      
             if etudiant:
                 print(f"""
-         id :{row[0]}
-         nom :{row[1]}
-         prenom :{row[2]}
-                      """)
-                print(" aucun etudiant trouvé!")
-      
+        ID        : {etudiant[0]}
+        Matricule : {etudiant[1]}
+        Nom       : {etudiant[2]}
+        Prénom    : {etudiant[3]}
+        Âge       : {etudiant[4]}
+        Classe    : {etudiant[5]}
+                """)
+            else:
+                print("Aucun étudiant trouvé!")  
+
         elif choix == '4':
-            id = int(input("id à modifier:"))
-            nom = int(input("nouveau nom :"))
-            prenom = int(input("nuovel age:"))
-            matricule = input("nuoveau matricule:")
-            db.modifier(id,nom,prenom,matricule)
+            id        = int(input("ID à modifier : "))
+            nom       = input("Nouveau nom : ")         
+            age       = int(input("Nouvel âge : "))      
+            matricule = input("Nouveau matricule : ")
+            db.modifier(id, nom, age, matricule)
 
         elif choix == '5':
-            id = int(input("id à supprimer:"))
-            db .supprimer(id)
+            id = int(input("ID à supprimer : "))
+            db.supprimer(id)
 
         elif choix == '0':
             break
+
         else:
-            print("retour.")
+            print("Choix invalide!")

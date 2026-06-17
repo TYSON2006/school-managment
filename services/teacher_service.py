@@ -3,7 +3,7 @@ from models.teachers_models import Teach_using
 import sys 
 
 
-from config.menu import menu_connexion,menu_teacher
+from config.menu import menu_connexion,menu_teachers
 
 def menu_teachers():
     db = Teach_using()

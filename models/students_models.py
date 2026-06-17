@@ -57,7 +57,7 @@ INSERT INTO students (nom,prenom,age,matricule,classe) VALUES (?,?,?,?,?)
 
 #  afficher 
 
-    def afficher(self,id):
+    def afficher(self):
         self.curseur.execute("""
 SELECT * FROM students
                              """)

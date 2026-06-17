@@ -7,11 +7,11 @@ from config.menu import menu_connexion,menu_akwaba
 
 def connet_users():
     print(menu_connexion)
-    choix = input("entrer un nombre :")
+    choix = input("entrer un nombre :").strip()
     if choix =='1':
         print(menu_akwaba)
-        nom = input("entrer votre nom :")
-        passeword = input("ecrivez votre mot de pass:")
+        nom = input("entrer votre nom :").strip()
+        passeword = input("ecrivez votre mot de pass:").strip()
         liaison = globaUsers()
         liaison.users()
         compte = liaison.verification(nom,passeword)

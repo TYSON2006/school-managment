@@ -25,7 +25,7 @@ class globaUsers(MESDONNÉES):
 
 
 
-    def ajouter(self, nom, role, passeword):
+    def ajouter(self, nom, passeword,role):
         self.curseur.execute(
             "INSERT INTO users(nom, passeword, role) VALUES (?,?,?)",
             (nom, passeword, role)
@@ -37,7 +37,7 @@ class globaUsers(MESDONNÉES):
         # afficher
 
 
-    def  affcicher (self):
+    def  afficher (self):
         self.curseur.execute(
             "SELECT * FROM users"
         )

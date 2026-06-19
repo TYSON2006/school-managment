@@ -17,3 +17,53 @@ CREATE TABLE IF NOT EXISTS absences(
                              ) 
                              """)
         self.connexion.commit()
+    
+
+
+    #ajouter
+
+    def ajout(self,student_id,date,status):
+        self.curseur.execute("""
+INSERT INTO absences (student_id,date,status) VALUES (?,?,?)
+                             """,(student_id,date,status))
+        self.connexion.commit()
+    
+
+
+    #afficher
+    def afficher(self):
+        self.curseur.execute("""
+SELECT * FROM absences 
+                             """)
+        return self.curseur.fetchall()
+    
+
+
+
+    #rechercher
+
+    def rechercher(self,id):
+        self.curseur.execute("""
+SELCT * FROM absences WHERE  id = ?
+                             """,(id,))
+        self.connexion.commit()
+    
+
+
+    #justifier
+
+    def justifier(self,id,status):
+        self.curseur.execute("""
+        UPDATE absences
+        SET status = ?
+        WHERE id = ?
+                             """,(status,id))
+        self.connexion.commit()
+
+    def supprimer(self,id):
+        self.curseur.execute("""
+DELETE  * FROM absences WHERE id = ?
+                             """,(id,))
+        self.connexion.commit()
+
+        self

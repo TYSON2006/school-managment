@@ -5,7 +5,19 @@ def menu_students():
     db = students_using()
 
     while True:
-        print(menu_students)
+        print("""
+==================================
+        GESTION DES ÉTUDIANTS
+==================================
+  1. Ajouter un étudiant
+  2. Afficher tous les étudiants
+  3. Rechercher un étudiant
+  4. Modifier un étudiant
+  5. Supprimer un étudiant
+  0. Retour
+==================================
+
+              """)
 
         choix = input("Faites un choix : ").strip()
 

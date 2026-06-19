@@ -25,12 +25,12 @@ def menu_students():
             else:
                 for row in resultat:
                     print(f"""
-        ID        : {row[0]}
-        Matricule : {row[1]}
-        Nom       : {row[2]}
-        Prénom    : {row[3]}
-        Âge       : {row[4]}
-        Classe    : {row[5]}
+        ID        : {etudiant[0]}
+        Matricule : {etudiant[1]}
+        Nom       : {etudiant[2]}
+        Prénom    : {etudiant[3]}
+        Âge       : {etudiant[4]}
+        Classe    : {etudiant[5]}
                     """)
 
         elif choix == '3':

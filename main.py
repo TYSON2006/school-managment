@@ -3,6 +3,7 @@ from services.student_services import menu_students
 from services.teacher_service import menu_teachers
 from services.subjects_services import menu_subject
 from services.grades_services import menu_grades
+from services.absences_services import menu_absences
 
 def main():
     role = connet_users()
@@ -55,7 +56,7 @@ def main():
             elif choix == '2':
                 menu_grades()
             elif choix == '3':
-                pass  
+                menu_absences()
             elif choix == '0':
                 print("merci d'être passé")
                 break

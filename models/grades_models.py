@@ -10,7 +10,7 @@ class grades_using(MESDONNÉES):
     def grades_bord(self):
         self.curseur.execute("""
 CREATE TABLE IF NOT EXISTS grades(
-                             id INTEGER PREMARY KEY AUTOINCREMENT,
+                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                              students_id INTEGER NOT NULL,
                              subjects_id INTEGER NOT NULL,
                              notes REAL NOT NULL CHECK(note >=0 and note <=20),

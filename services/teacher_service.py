@@ -1,62 +1,55 @@
 from models.teachers_models import Teach_using
-
-import sys 
-
-
-from config.menu import menu_connexion,menu_teachers
+from config.menu import menu_teachers as texte_menu_teachers
 
 def menu_teachers():
     db = Teach_using()
 
-
     while True:
-        print("""
+        print(texte_menu_teachers)
 
-==================================
-        ESPACE TEACHER
-==================================
-  1. Ajouter une matière ,un nom
-  2. Afficher tousles professeur
-  3. Afficher un professeur
-  4. Modifier un proffesseur
-  5. Supprimer un professeur
-  0. Retour
-==================================
-              """)
-        choix = input("faire un choix:")
+        choix = input("Faites un choix : ").strip()
+
         if choix == '1':
-            nom =input("ecrivez votre nom:")
-            matiere = input("entrer votre matiere")
-            db.ajout(nom,matiere)
+            nom     = input("Nom du professeur : ").strip()
+            matiere = input("Matière enseignée : ").strip()
+            db.ajout(nom, matiere)
 
         elif choix == '2':
-            reusltat = db.afficher
-            if not reusltat:
-                print("aucun professeur trouvé")
-            else :
-                for row in reusltat:
+            resultat = db.afficher()           # ← parenthèses manquaient
+            if not resultat:
+                print("Aucun professeur trouvé!")
+            else:
+                for row in resultat:
                     print(f"""
-              id : {row[0]}
-             nom :{row[1]}
-             matiere:{row[2]}
-                          """)
-                    print("merci d'être passé")
+        ID      : {row[0]}
+        Nom     : {row[1]}
+        Matière : {row[2]}
+                    """)
+
         elif choix == '3':
-            id = input("id à rechercher:")
-            db.afficher(id)
+            id       = int(input("ID à rechercher : "))   # ← int
+            resultat = db.rechercher(id)                   # ← rechercher pas afficher
+            if resultat:
+                print(f"""
+        ID      : {resultat[0]}
+        Nom     : {resultat[1]}
+        Matière : {resultat[2]}
+                """)
+            else:
+                print("Professeur non trouvé!")
+
         elif choix == '4':
-            nom = input("entrer le nouveau nom:")
-            matiere = input("nouvelle matiere:")
-            db.modifier(nom,matiere)
+            id      = int(input("ID à modifier : "))       # ← id manquait
+            nom     = input("Nouveau nom : ").strip()
+            matiere = input("Nouvelle matière : ").strip()
+            db.modifier(id, nom, matiere)                  # ← id ajouté
+
         elif choix == '5':
-            id = int(input("id a supprimer:"))
+            id = int(input("ID à supprimer : "))
             db.supprimer(id)
-        elif choix == '5':
+
+        elif choix == '0':                                 # ← '5' dupliqué → '0'
             break
+
         else:
-            print("retour.")
-        
-        
-       
-
-
+            print("Choix invalide!")

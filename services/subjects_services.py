@@ -1,60 +1,49 @@
 from models.subjects_models import subject_using
-
-import sys
-
-from config.menu import menu_connexion,menu_subjects
-
-
+from config.menu import menu_subjects as texte_menu_subjects
 
 def menu_subject():
-    db = subject_using
+    db = subject_using()                   # ← parenthèses manquaient
 
+    while True:
+        print(texte_menu_subjects)
 
-    while True :
-        print("""
-==================================
-        GESTION DES MATIÈRES
-==================================
-  1. Ajouter une matière
-  2. Afficher toutes les matières
-  3. Rechercher une matière
-  4. Supprimer une matière
-  0. Retour
-==================================
-              """)
-        choix = input("faite un choix :").strip()
+        choix = input("Faites un choix : ").strip()
+
         if choix == '1':
-            matiere = input("entrer la matiere:")
-            db.ajout(matiere)
+            nom        = input("Nom de la matière : ").strip()
+            teacher_id = int(input("ID du professeur : "))
+            db.ajouter(nom, teacher_id)    # ← ajout → ajouter + teacher_id ajouté
+
         elif choix == '2':
-            resultat = db .afficher()
+            resultat = db.afficher()
             if not resultat:
-               print("aucune matiere trouvé!")
+                print("Aucune matière trouvée!")
             else:
-                for row in resultat:
+                for row in resultat:       # ← resultat → row dans la boucle
                     print(f"""
-                          id {resultat[0]}
-                          matiere : {resultat[1]}
-                          """)
-                    print("merci d'être passé!")
+        ID            : {row[0]}
+        Matière       : {row[1]}
+        Professeur ID : {row[2]}
+                    """)
+
         elif choix == '3':
-            matiere = input("id de la matiere rechercher:")
-            matiere = db.rechercher(id)
+            id       = int(input("ID de la matière à rechercher : "))  # ← int
+            resultat = db.rechercher(id)
+            if resultat:
+                print(f"""
+        ID            : {resultat[0]}
+        Matière       : {resultat[1]}
+        Professeur ID : {resultat[2]}
+                """)
+            else:
+                print("Matière non trouvée!")
 
         elif choix == '4':
-            matiere = input("id de la matiere a supprimer? :")
-            print("merci d'être passé!")
-            matiere = db.supprimer(id)
+            id = int(input("ID de la matière à supprimer : "))  # ← int
+            db.supprimer(id)               # ← appel correct
 
         elif choix == '0':
             break
+
         else:
-            print("retour")
-            
-
-
-
-
-            
-               
-           
+            print("Choix invalide!")

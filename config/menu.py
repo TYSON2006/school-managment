@@ -46,11 +46,11 @@ menu_teachers = """
 ==================================
         ESPACE TEACHER
 ==================================
-  1. Ajouter un étudiant
-  2. Afficher tous les étudiants
-  3. Rechercher un étudiant
-  4. Modifier un étudiant
-  5. Supprimer un étudiant
+  1. Ajouter un Professeur
+  2. Afficher tous les Professeurs
+  3. Rechercher un Professeur
+  4. Modifier un Professeur
+  5. Supprimer un Professeur
   0. Retour
 ==================================
 

@@ -1,85 +1,62 @@
 from models.grades_models import grades_using
-
-import sys
-
-from config.menu import menu_connexion,menu_grades
-
+from config.menu import menu_grades as texte_menu_grades
 
 def menu_grades():
     db = grades_using()
 
+    while True:
+        print(texte_menu_grades)
 
-    while True :
-        print(
-            """
-
-
-==================================
-        GESTION DES NOTES
-==================================
-  1. Ajouter une note
-  2. Afficher toutes les notes
-  3. Rechercher une note
-  4. Modifier une note
-  5. Supprimer une note
-  6. Calculer la moyenne d'un étudiant
-  0. Retour
-==================================
-
-
-"""
-        )
-
-        choix = input("faite un choix:").strip()
+        choix = input("Faites un choix : ").strip()
 
         if choix == '1':
-            students_id = input("id de l'etududiant:")
-            subjects_id = input("id de la matiere")
-            note = float(input("0-20"))
-            print("merci d'être passé")
-            db.ajout(students_id,subjects_id,note)
+            students_id = int(input("ID de l'étudiant : "))
+            subjects_id = int(input("ID de la matière : "))
+            note        = float(input("Note (0-20) : "))
+            db.ajout(students_id, subjects_id, note)
+
         elif choix == '2':
             resultat = db.afficher()
             if not resultat:
-                print("aucun resultat trouvé!")
+                print("Aucun résultat trouvé!")
             else:
                 for row in resultat:
                     print(f"""
-                          id :{row[1]} , 
-                          etudiant id :{row[2]}
-                          matiere id : {row[3]}
-                          note : {row[4]}
-                    """) 
-                    print("merci d'être passé")
-                    db.afficher(students_id,subjects_id,note)
-        elif choix == '3':
-            id = int(input("id de la note:"))
+        ID          : {row[0]}
+        Étudiant ID : {row[1]}
+        Matière ID  : {row[2]}
+        Note        : {row[3]}
+                    """)                   # ← index corrigés, row pas resultat
 
+        elif choix == '3':
+            id       = int(input("ID de la note : "))
             resultat = db.rechercher(id)
-            if  resultat:
+            if resultat:
                 print(f"""
-                        id :{resultat[1]},
-                        students id :{resultat[2]},
-                        subjects id :{resultat[3]},
-                        note : {resultat[4]} 
-                      """)
-                print("merci d'être passé")
+        ID          : {resultat[0]}
+        Étudiant ID : {resultat[1]}
+        Matière ID  : {resultat[2]}
+        Note        : {resultat[3]}
+                """)                       # ← index corrigés
             else:
-                print("aucun resultat trouvé!")
+                print("Aucun résultat trouvé!")
+
         elif choix == '4':
-            id = input("id a modifier :")
-            note = float(input("nouvelle note (0-20):"))
-            db.modifier(id,note)
+            id   = int(input("ID à modifier : "))    # ← int manquait
+            note = float(input("Nouvelle note (0-20) : "))
+            db.modifier(id, note)
+
         elif choix == '5':
-            id = input("id a supprimer:")
+            id = int(input("ID à supprimer : "))     # ← int + db.supprimer manquait
+            db.supprimer(id)
+
         elif choix == '6':
-            students_id = int(input("id de l'etudiant :"))
-            moyenne = db.calculer(students_id)
-            print(f"moyenne de l'etudiant id{students_id}: {moyenne : .2f/20}")
+            student_id = int(input("ID de l'étudiant : "))
+            moyenne    = db.calculer(student_id)     # ← students_id → student_id
+            print(f"Moyenne de l'étudiant ID {student_id} : {moyenne:.2f}/20")  # ← syntaxe corrigée
+
         elif choix == '0':
             break
-        else:
-            print("choix valide!!")       
-                  
 
-   
+        else:
+            print("Choix invalide!")

@@ -110,3 +110,15 @@ menu_absences  = """
 
 
 """
+
+
+menu_stats = """
+=========================================
+          STATISTIQUES
+=========================================
+  1. Meilleur étudiant
+  2. Moyenne générale
+  3. Nombre total d'absences
+  0. Retour
+=========================================
+        """

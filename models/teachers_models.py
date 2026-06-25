@@ -29,7 +29,7 @@ class Teach_using(MESDONNÉES):
             """, (nom, matiere))
             self.connexion.commit()
             logger.info("Professeur %s ajouté", nom)
-            print("Professeur ajouté ✅")
+            print("Professeur ajouté ")
         except Exception as e:
             logger.error("Erreur base de données : %s", {e})
             print("Une erreur est survenue.")

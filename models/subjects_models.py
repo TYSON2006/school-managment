@@ -30,7 +30,7 @@ class subject_using(MESDONNÉES):
             """, (nom, teacher_id))
             self.connexion.commit()
             logger.info("Matière %s ajoutée", nom)
-            print("Matière ajoutée ✅")
+            print("Matière ajoutée ")
         except Exception as e:
             logger.error("Erreur base de données : %s",{e})
             print("Une erreur est survenue.")
@@ -58,7 +58,7 @@ class subject_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Matière %s supprimée", id)
-            print("Matière supprimée ✅")
+            print("Matière supprimée ")
         except Exception as e:
             logger.error("Erreur base de données : %s", {e})
             print("Une erreur est survenue.")

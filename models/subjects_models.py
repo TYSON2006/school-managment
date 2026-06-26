@@ -19,7 +19,7 @@ class subject_using(MESDONNÉES):
             self.connexion.commit()
             logger.info("Table subjects créée")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def ajouter(self, nom, teacher_id):
@@ -32,7 +32,7 @@ class subject_using(MESDONNÉES):
             logger.info("Matière %s ajoutée", nom)
             print("Matière ajoutée ")
         except Exception as e:
-            logger.error("Erreur base de données : %s",{e})
+            logger.error("Erreur base de données : %s",e)
             print("Une erreur est survenue.")
 
     def afficher(self):
@@ -40,7 +40,7 @@ class subject_using(MESDONNÉES):
             self.curseur.execute("SELECT * FROM subjects")
             return self.curseur.fetchall()
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
 
     def rechercher(self, id):
         try:
@@ -49,7 +49,7 @@ class subject_using(MESDONNÉES):
             """, (id,))
             return self.curseur.fetchone()
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
 
     def supprimer(self, id):
         try:
@@ -60,5 +60,5 @@ class subject_using(MESDONNÉES):
             logger.info("Matière %s supprimée", id)
             print("Matière supprimée ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")

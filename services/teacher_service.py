@@ -12,6 +12,7 @@ def menu_teachers():
         if choix == '1':
             nom     = input("Nom du professeur : ").strip()
             matiere = input("Matière enseignée : ").strip()
+            user_id = int(input("user_id :"))
             db.ajout(nom, matiere)
 
         elif choix == '2':
@@ -24,6 +25,7 @@ def menu_teachers():
         ID      : {row[0]}
         Nom     : {row[1]}
         Matière : {row[2]}
+        user_id : {row[3]}
                     """)
 
         elif choix == '3':

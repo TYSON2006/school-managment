@@ -3,6 +3,7 @@ import sys
 from config.menu import menu_connexion, menu_akwaba
 
 def connet_users():
+    
     print(menu_connexion)
     choix = input("Entrer un nombre : ").strip()
 
@@ -21,9 +22,8 @@ def connet_users():
             print(f"Akwaba MR {nom_users}, votre rôle est : {role_users}")
             return role_users
         else:
-            print("Nom ou mot de passe incorrect.")
-            sys.exit()
-
+            print("Nom ou mot de passe incorrect ressayer ")
+           
     elif choix == '2':
         print("Merci d'être passé.")
         sys.exit()

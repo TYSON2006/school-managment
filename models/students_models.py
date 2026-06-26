@@ -15,26 +15,28 @@ class students_using(MESDONNÉES):
                     nom       TEXT NOT NULL,
                     prenom    TEXT NOT NULL,
                     age       INTEGER NOT NULL,
-                    classe    TEXT NOT NULL
+                    classe    TEXT NOT NULL,
+                    user_id INTEGER NOT NULL,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
                 )
             """)
             self.connexion.commit()
             logger.info("Table students créée")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
-    def ajouter(self, nom, prenom, age, matricule, classe):
+    def ajouter(self, nom, prenom, age, matricule, classe,user_id):
         try:
             self.curseur.execute("""
-                INSERT INTO students (matricule, nom, prenom, age, classe)
-                VALUES (?, ?, ?, ?, ?)
-            """, (matricule, nom, prenom, age, classe))
+                INSERT INTO students (matricule, nom, prenom, age, classe,user_id)
+                VALUES (?, ?, ?, ?, ?,?)
+            """, (matricule, nom, prenom, age, classe,user_id))
             self.connexion.commit()
             logger.info("Étudiant %s ajouté", nom)
             print("Étudiant ajouté ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def modifier(self, id, nom, age, matricule):
@@ -48,7 +50,7 @@ class students_using(MESDONNÉES):
             logger.info("Étudiant %s modifié", id)
             print("Étudiant modifié ")
         except Exception as e:
-            logger.error("Erreur base de données : %s",{e})
+            logger.error("Erreur base de données : %s",e)
             print("Une erreur est survenue.")
 
     def afficher(self):
@@ -56,7 +58,7 @@ class students_using(MESDONNÉES):
             self.curseur.execute("SELECT * FROM students")
             return self.curseur.fetchall()    # ← fetchall pas fetchone
         except Exception as e:
-            logger.error("Erreur base de données : %s",{e})
+            logger.error("Erreur base de données : %s",e)
 
     def rechercher(self, id):
         try:
@@ -65,7 +67,7 @@ class students_using(MESDONNÉES):
             """, (id,))                       # ← SELECT pas SELCT
             return self.curseur.fetchone()    # ← return manquait
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
 
     def supprimer(self, id):
         try:
@@ -76,5 +78,17 @@ class students_using(MESDONNÉES):
             logger.info("Étudiant %s supprimé", id)
             print("Étudiant supprimé ✅")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
+
+
+
+
+
+
+    def  drop(self):
+        self.curseur.execute("""
+    DROP TABLE  IF EXISTS students
+             
+       """ )
+        self.connexion.commit()

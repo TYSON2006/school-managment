@@ -15,7 +15,8 @@ def menu_students():
             age       = int(input("Âge : "))
             matricule = input("Matricule : ")
             classe    = input("Classe : ")
-            db.ajouter(nom, prenom, age, matricule, classe)
+            user_id = int(input("user_id :"))
+            db.ajouter(nom, prenom, age, matricule, classe,user_id)
 
         elif choix == '2':
             resultat = db.afficher()
@@ -30,6 +31,7 @@ def menu_students():
         Prénom    : {row[3]}
         Âge       : {row[4]}
         Classe    : {row[5]}
+        user_id   : {row[6]} 
                     """)
 
         elif choix == '3':

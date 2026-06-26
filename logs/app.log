@@ -1,0 +1,9 @@
+2026-06-26 14:57:43,593 [INFO] Table students créée
+2026-06-26 14:58:53,787 [ERROR] Erreur base de données : NOT NULL constraint failed: students.user_id
+2026-06-26 15:01:40,785 [ERROR] Erreur base de données : NOT NULL constraint failed: students.user_id
+2026-06-26 15:03:14,063 [INFO] Table subjects créée
+2026-06-26 15:03:36,819 [INFO] Table subjects créée
+2026-06-26 15:10:23,679 [ERROR] Erreur : {OperationalError('no such column: notes')}
+2026-06-26 15:14:12,868 [INFO] Table students créée
+2026-06-26 15:25:56,430 [INFO] Table students créée
+2026-06-26 15:58:19,535 [INFO] Table absences créée

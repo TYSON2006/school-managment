@@ -22,7 +22,7 @@ class globaUsers(MESDONNÉES):
             """, (nom, passeword, role))
             self.connexion.commit()
             logger.info("Utilisateur %s ajouté", nom)
-            print("Utilisateur ajouté ✅")
+            print("Utilisateur ajouté ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -45,7 +45,7 @@ class globaUsers(MESDONNÉES):
             logger.info("Utilisateur %s modifié", id)
             print("Utilisateur modifié ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def supprimer(self, id):
@@ -57,7 +57,7 @@ class globaUsers(MESDONNÉES):
             logger.info("Utilisateur %s supprimé", id)
             print("Utilisateur supprimé ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def close(self):

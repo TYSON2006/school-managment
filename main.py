@@ -4,6 +4,8 @@ from services.teacher_service import menu_teachers
 from services.subjects_services import menu_subject
 from services.grades_services import menu_grades
 from services.absences_services import menu_absences
+from models.students_models import students_using
+from models.teachers_models import Teach_using
 
 def main():
     role = connet_users()
@@ -85,6 +87,10 @@ def main():
                 print("choix invalide !!")
         else:
             print("role non reconnu,accès interdit.")
+
+    # superman = Teach_using()
+    # superman.tech_bord()
+    # print("g")
 if __name__ == "__main__":
     main()     
 

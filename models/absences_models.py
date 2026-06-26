@@ -20,7 +20,7 @@ class absences_using(MESDONNÉES):
             self.connexion.commit()
             logger.info("Table absences créée")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def ajout(self, student_id, date, status):
@@ -33,7 +33,7 @@ class absences_using(MESDONNÉES):
             logger.info("Absence ajoutée")
             print("Absence ajoutée ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def afficher(self):
@@ -41,7 +41,7 @@ class absences_using(MESDONNÉES):
             self.curseur.execute("SELECT * FROM absences")
             return self.curseur.fetchall()
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
 
     def rechercher(self, id):
         try:
@@ -50,7 +50,7 @@ class absences_using(MESDONNÉES):
             """, (id,))             # ← SELCT → SELECT + FROM absences ajouté
             return self.curseur.fetchone()  # ← return manquait
         except Exception as e:
-            logger.error("Erreur base de données : %s",{e})
+            logger.error("Erreur base de données : %s",e)
 
     def justifier(self, id, status):
         try:
@@ -63,7 +63,7 @@ class absences_using(MESDONNÉES):
             logger.info("Absence mise à jour")
             print("Statut mis à jour ")
         except Exception as e:
-            logger.error("Erreur base de données : %s", {e})
+            logger.error("Erreur base de données : %s", e)
 
     def supprimer(self, id):
         try:
@@ -74,4 +74,4 @@ class absences_using(MESDONNÉES):
             logger.info("Absence supprimée")
             print("Absence supprimée ")
         except Exception as e:
-            logger.error("Erreur base de données : %s",{e})
+            logger.error("Erreur base de données : %s",e)

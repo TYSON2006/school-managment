@@ -1,0 +1,8 @@
+import sys
+sys.path.insert(0, '.')
+from models.users_models import globaUsers
+
+db = globaUsers()
+db.ajouter('Admin','admin', '1234', 'admin')
+print("Compte admin créé ")
+print("Connectez-vous avec : nom=Admin / mot de passe=1234")

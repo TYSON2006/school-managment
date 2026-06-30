@@ -2,7 +2,7 @@ from database.connexion import MESDONNÉES
 from utils.loggers import logger
 
 class students_using(MESDONNÉES):
-    def __init__(self):                     # ← __int__ → __init__
+    def __init__(self):
         super().__init__()
         self.students_bord()
 
@@ -11,12 +11,12 @@ class students_using(MESDONNÉES):
             self.curseur.execute("""
                 CREATE TABLE IF NOT EXISTS students(
                     id        INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id   INTEGER NOT NULL,
                     matricule TEXT NOT NULL,
                     nom       TEXT NOT NULL,
                     prenom    TEXT NOT NULL,
                     age       INTEGER NOT NULL,
                     classe    TEXT NOT NULL,
-                    user_id INTEGER NOT NULL,
                     FOREIGN KEY (user_id) REFERENCES users(id)
                 )
             """)
@@ -26,15 +26,15 @@ class students_using(MESDONNÉES):
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
-    def ajouter(self, nom, prenom, age, matricule, classe,user_id):
+    def ajouter(self, user_id, nom, prenom, age, matricule, classe):
         try:
             self.curseur.execute("""
-                INSERT INTO students (matricule, nom, prenom, age, classe,user_id)
-                VALUES (?, ?, ?, ?, ?,?)
-            """, (matricule, nom, prenom, age, classe,user_id))
+                INSERT INTO students (user_id, matricule, nom, prenom, age, classe)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (user_id, matricule, nom, prenom, age, classe))
             self.connexion.commit()
             logger.info("Étudiant %s ajouté", nom)
-            print("Étudiant ajouté ")
+            print("Étudiant ajouté ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -45,27 +45,27 @@ class students_using(MESDONNÉES):
                 UPDATE students
                 SET nom = ?, age = ?, matricule = ?
                 WHERE id = ?
-            """, (nom, age, matricule, id))   # ← UPDATE students pas teachers
+            """, (nom, age, matricule, id))
             self.connexion.commit()
             logger.info("Étudiant %s modifié", id)
-            print("Étudiant modifié ")
+            print("Étudiant modifié ✅")
         except Exception as e:
-            logger.error("Erreur base de données : %s",e)
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def afficher(self):
         try:
             self.curseur.execute("SELECT * FROM students")
-            return self.curseur.fetchall()    # ← fetchall pas fetchone
+            return self.curseur.fetchall()
         except Exception as e:
-            logger.error("Erreur base de données : %s",e)
+            logger.error("Erreur base de données : %s", e)
 
     def rechercher(self, id):
         try:
             self.curseur.execute("""
                 SELECT * FROM students WHERE id = ?
-            """, (id,))                       # ← SELECT pas SELCT
-            return self.curseur.fetchone()    # ← return manquait
+            """, (id,))
+            return self.curseur.fetchone()
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 
@@ -73,22 +73,10 @@ class students_using(MESDONNÉES):
         try:
             self.curseur.execute("""
                 DELETE FROM students WHERE id = ?
-            """, (id,))                       # ← students pas teachers
+            """, (id,))
             self.connexion.commit()
             logger.info("Étudiant %s supprimé", id)
             print("Étudiant supprimé ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
-
-
-
-
-
-
-    def  drop(self):
-        self.curseur.execute("""
-    DROP TABLE  IF EXISTS students
-             
-       """ )
-        self.connexion.commit()

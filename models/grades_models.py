@@ -20,7 +20,7 @@ class grades_using(MESDONNÉES):
             """)
             self.connexion.commit()
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
 
     def ajout(self, students_id, subjects_id, notes):
         if not (0 <= notes <= 20):
@@ -33,28 +33,28 @@ class grades_using(MESDONNÉES):
                 VALUES (?, ?, ?)
             """, (students_id, subjects_id, notes))
             self.connexion.commit()
-            print("Note ajoutée ")
-            logger.info(f"Note {notes} ajoutée")
+            print("Note ajoutée ✅")
+            logger.info("Note %s ajoutée", notes)
             return True
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
     def afficher(self):
         try:
             self.curseur.execute("SELECT * FROM grades")
-            return self.curseur.fetchall()     # ← fetchall pas fetchone
+            return self.curseur.fetchall()
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
 
     def rechercher(self, id):
         try:
             self.curseur.execute("""
                 SELECT * FROM grades WHERE id = ?
-            """, (id,))                        # ← FROM grades manquait
+            """, (id,))
             return self.curseur.fetchone()
         except Exception as e:
-            logger.error(f"Erreur : s%",{e})
+            logger.error("Erreur base de données : %s", e)
 
     def modifier(self, id, notes):
         try:
@@ -62,11 +62,12 @@ class grades_using(MESDONNÉES):
                 UPDATE grades
                 SET notes = ?
                 WHERE id = ?
-            """, (notes, id))                  # ← syntaxe UPDATE corrigée
+            """, (notes, id))
             self.connexion.commit()
-            logger.info(f"Note modifiée")
+            logger.info("Note modifiée")
+            print("Note modifiée ✅")
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
 
     def supprimer(self, id):
         try:
@@ -75,8 +76,9 @@ class grades_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Note supprimée")
+            print("Note supprimée ✅")
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
 
     def calculer(self, students_id):
         try:
@@ -93,5 +95,5 @@ class grades_using(MESDONNÉES):
             moyenne = totale / len(notes)
             return moyenne
         except Exception as e:
-            logger.error(f"Erreur : %s",{e})
+            logger.error("Erreur base de données : %s", e)
             return 0

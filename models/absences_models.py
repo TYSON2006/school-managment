@@ -3,8 +3,8 @@ from utils.loggers import logger
 
 class absences_using(MESDONNÉES):
     def __init__(self):
-        super().__init__()          # ← super() avec parenthèses
-        self.absences_bord()        # ← appelé automatiquement
+        super().__init__()
+        self.absences_bord()
 
     def absences_bord(self):
         try:
@@ -31,7 +31,7 @@ class absences_using(MESDONNÉES):
             """, (student_id, date, status))
             self.connexion.commit()
             logger.info("Absence ajoutée")
-            print("Absence ajoutée ")
+            print("Absence ajoutée ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -47,10 +47,10 @@ class absences_using(MESDONNÉES):
         try:
             self.curseur.execute("""
                 SELECT * FROM absences WHERE id = ?
-            """, (id,))             # ← SELCT → SELECT + FROM absences ajouté
-            return self.curseur.fetchone()  # ← return manquait
+            """, (id,))
+            return self.curseur.fetchone()
         except Exception as e:
-            logger.error("Erreur base de données : %s",e)
+            logger.error("Erreur base de données : %s", e)
 
     def justifier(self, id, status):
         try:
@@ -61,7 +61,7 @@ class absences_using(MESDONNÉES):
             """, (status, id))
             self.connexion.commit()
             logger.info("Absence mise à jour")
-            print("Statut mis à jour ")
+            print("Statut mis à jour ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 
@@ -69,9 +69,9 @@ class absences_using(MESDONNÉES):
         try:
             self.curseur.execute("""
                 DELETE FROM absences WHERE id = ?
-            """, (id,))             # ← DELETE * → DELETE FROM
+            """, (id,))
             self.connexion.commit()
             logger.info("Absence supprimée")
-            print("Absence supprimée ")
+            print("Absence supprimée ✅")
         except Exception as e:
-            logger.error("Erreur base de données : %s",e)
+            logger.error("Erreur base de données : %s", e)

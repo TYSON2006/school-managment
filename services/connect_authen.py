@@ -3,27 +3,31 @@ import sys
 from config.menu import menu_connexion, menu_akwaba
 
 def connet_users():
-    
-    print(menu_connexion)
-    choix = input("Entrer un nombre : ").strip()
+    while True:
+        print(menu_connexion)
+        choix = input("Entrer un nombre : ").strip()
 
-    if choix == '1':
-        print(menu_akwaba)
-        nom       = input("Entrer votre nom : ").strip()
-        passeword = input("Écrivez votre mot de passe : ").strip()
+        if choix == '1':
+            print(menu_akwaba)
+            pseudo      = input("Entrer votre pseudo: ").strip()
+            passeword = input("Écrivez votre mot de passe : ").strip()
 
-        liaison = globaUsers()
-        compte  = liaison.verification(nom, passeword)  # ← liaison.users() retiré
-        liaison.close()
+            liaison = globaUsers()
+            compte  = liaison.verification(pseudo, passeword)
+            liaison.close()
 
-        if compte:
-            nom_users  = compte[1]
-            role_users = compte[2]
-            print(f"Akwaba MR {nom_users}, votre rôle est : {role_users}")
-            return role_users
+            if compte:
+                nom_users  = compte[1]
+                pseudo_users = compte[2]
+                role_users = compte[4]     
+                print(f"Akwaba MR {nom_users}, votre rôle est : {role_users}")
+                return role_users
+            else:
+                print("pseudo ou mot de passe incorrect, réessayez.")
+
+        elif choix == '2':
+            print("Merci d'être passé.")
+            return None
+
         else:
-            print("Nom ou mot de passe incorrect ressayer ")
-           
-    elif choix == '2':
-        print("Merci d'être passé.")
-        sys.exit()
+            print("Choix invalide.")

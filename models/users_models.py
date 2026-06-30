@@ -4,28 +4,49 @@ from utils.loggers import logger
 class globaUsers(MESDONNÉES):
     def __init__(self):
         super().__init__()
+        self.users_bord()
 
-    def verification(self, nom, passeword):
+    def users_bord(self):
         try:
             self.curseur.execute("""
-                SELECT * FROM users WHERE nom = ? AND passeword = ?
-            """, (nom, passeword))
+                CREATE TABLE IF NOT EXISTS users(
+                    id        INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nom       TEXT NOT NULL,
+                    pseudo    TEXT NOT NULL UNIQUE,
+                    passeword TEXT NOT NULL,
+                    role      TEXT NOT NULL
+                )
+            """)
+            self.connexion.commit()
+            logger.info("Table users créée")
+        except Exception as e:
+            logger.error("Erreur base de données : %s", e)
+            print("Une erreur est survenue.")
+
+    def verification(self, pseudo, passeword):
+        try:
+            self.curseur.execute("""
+                SELECT * FROM users WHERE pseudo = ? AND passeword = ?
+            """, (pseudo, passeword))
             return self.curseur.fetchone()
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 
-    def ajouter(self, nom, passeword, role):
+    def ajouter(self, nom,pseudo, passeword, role):
         try:
             self.curseur.execute("""
-                INSERT INTO users (nom, passeword, role)
-                VALUES (?, ?, ?)
-            """, (nom, passeword, role))
+                INSERT INTO users (nom,pseudo, passeword, role)
+                VALUES (?, ?, ?,?)
+            """, (nom, pseudo,passeword, role))
             self.connexion.commit()
             logger.info("Utilisateur %s ajouté", nom)
-            print("Utilisateur ajouté ")
+            print("Utilisateur ajouté ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
+
+    def dernier_id(self):
+        return self.curseur.lastrowid
 
     def afficher(self):
         try:
@@ -43,7 +64,7 @@ class globaUsers(MESDONNÉES):
             """, (nom, role, id))
             self.connexion.commit()
             logger.info("Utilisateur %s modifié", id)
-            print("Utilisateur modifié ")
+            print("Utilisateur modifié ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -52,13 +73,15 @@ class globaUsers(MESDONNÉES):
         try:
             self.curseur.execute("""
                 DELETE FROM users WHERE id = ?
-            """, (id,))                     # ← triple quote + virgule corrigées
+            """, (id,))
             self.connexion.commit()
             logger.info("Utilisateur %s supprimé", id)
-            print("Utilisateur supprimé ")
+            print("Utilisateur supprimé ✅")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
+
+
 
     def close(self):
         self.connexion.close()

@@ -7,3 +7,77 @@
 2026-06-26 15:14:12,868 [INFO] Table students créée
 2026-06-26 15:25:56,430 [INFO] Table students créée
 2026-06-26 15:58:19,535 [INFO] Table absences créée
+2026-06-29 12:41:01,080 [INFO] Table users créée
+2026-06-29 12:41:01,081 [INFO] Utilisateur Admin ajouté
+2026-06-29 12:43:15,380 [INFO] Table users créée
+2026-06-29 12:45:37,621 [INFO] Table users créée
+2026-06-29 12:46:34,073 [INFO] Table users créée
+2026-06-29 12:48:01,112 [INFO] Table users créée
+2026-06-29 12:55:50,456 [INFO] Table users créée
+2026-06-29 13:07:53,086 [INFO] Table users créée
+2026-06-29 13:08:01,276 [INFO] Table students créée
+2026-06-29 13:08:01,277 [INFO] Table users créée
+2026-06-29 13:08:37,077 [INFO] Utilisateur Kouadio ajouté
+2026-06-29 13:09:52,883 [INFO] Étudiant Kouadio ajouté
+2026-06-29 13:10:45,948 [INFO] Table teachers créée
+2026-06-29 13:10:45,949 [INFO] Table users créée
+2026-06-29 13:14:13,720 [INFO] Utilisateur Kouadio ajouté
+2026-06-29 13:14:53,615 [INFO] Professeur Kouadio ajouté
+2026-06-29 13:16:57,572 [INFO] Table subjects créée
+2026-06-29 13:22:32,663 [INFO] Matière Mathématique ajoutée
+2026-06-29 20:12:13,241 [INFO] Table users créée
+2026-06-29 20:13:03,977 [INFO] Table users créée
+2026-06-29 20:13:11,174 [INFO] Table subjects créée
+2026-06-29 20:14:19,633 [INFO] Note 14.0 ajoutée
+2026-06-29 20:15:45,004 [INFO] Table users créée
+2026-06-29 20:15:50,948 [INFO] Table students créée
+2026-06-29 20:15:50,949 [INFO] Table users créée
+2026-06-29 20:17:45,224 [INFO] Utilisateur Touré ajouté
+2026-06-29 20:18:33,622 [INFO] Étudiant Touré ajouté
+2026-06-29 20:24:20,070 [INFO] Utilisateur Boa ajouté
+2026-06-29 20:25:18,435 [INFO] Étudiant Boa ajouté
+2026-06-29 20:27:29,214 [INFO] Utilisateur  ajouté
+2026-06-29 20:28:36,628 [INFO] Étudiant  ajouté
+2026-06-29 20:29:27,090 [INFO] Étudiant 4 modifié
+2026-06-29 20:30:55,892 [INFO] Utilisateur Elogne ajouté
+2026-06-29 20:31:56,010 [INFO] Étudiant Elogne ajouté
+2026-06-29 20:37:15,396 [INFO] Utilisateur 1 ajouté
+2026-06-29 20:39:38,362 [INFO] Étudiant 1 ajouté
+2026-06-29 20:42:38,004 [INFO] Étudiant 6 modifié
+2026-06-29 21:20:55,881 [INFO] Note 19.0 ajoutée
+2026-06-29 21:21:41,541 [INFO] Table absences créée
+2026-06-29 21:22:29,296 [INFO] Absence ajoutée
+2026-06-29 21:27:50,092 [INFO] Table users créée
+2026-06-29 21:30:18,576 [INFO] Table students créée
+2026-06-29 21:30:18,576 [INFO] Table users créée
+2026-06-30 11:13:36,503 [ERROR] Erreur base de données : near "passeword": syntax error
+2026-06-30 11:13:36,504 [ERROR] Erreur base de données : table users has no column named pseudo
+2026-06-30 11:15:01,622 [ERROR] Erreur base de données : near "passeword": syntax error
+2026-06-30 11:15:01,622 [ERROR] Erreur base de données : no such table: users
+2026-06-30 11:15:21,377 [ERROR] Erreur base de données : near "passeword": syntax error
+2026-06-30 11:15:21,378 [ERROR] Erreur base de données : no such table: users
+2026-06-30 11:16:22,493 [ERROR] Erreur base de données : near "passeword": syntax error
+2026-06-30 11:16:22,494 [ERROR] Erreur base de données : no such table: users
+2026-06-30 11:24:14,672 [ERROR] Erreur base de données : near "passeword": syntax error
+2026-06-30 11:24:14,672 [ERROR] Erreur base de données : no such table: users
+2026-06-30 11:34:08,680 [INFO] Table users créée
+2026-06-30 11:34:08,683 [INFO] Utilisateur Admin ajouté
+2026-06-30 11:34:55,533 [INFO] Table users créée
+2026-06-30 11:36:46,063 [INFO] Table students créée
+2026-06-30 11:36:46,064 [INFO] Table users créée
+2026-06-30 14:02:49,263 [INFO] Table users créée
+2026-06-30 14:22:05,714 [INFO] Table users créée
+2026-06-30 14:22:08,589 [INFO] Table students créée
+2026-06-30 14:22:08,590 [INFO] Table users créée
+2026-06-30 14:22:55,731 [INFO] Utilisateur Kouadio ajouté
+2026-06-30 14:23:50,772 [INFO] Étudiant Kouadio ajouté
+2026-06-30 15:08:34,050 [INFO] Utilisateur Kouadio ajouté
+2026-06-30 15:09:03,195 [INFO] Étudiant Kouadio ajouté
+2026-06-30 15:10:42,561 [INFO] Utilisateur Touré ajouté
+2026-06-30 15:11:21,266 [INFO] Étudiant Touré ajouté
+2026-06-30 15:11:55,705 [INFO] Utilisateur Boa ajouté
+2026-06-30 15:12:32,850 [INFO] Étudiant Boa ajouté
+2026-06-30 15:14:53,159 [INFO] Utilisateur Elogne ajouté
+2026-06-30 15:18:47,596 [INFO] Étudiant Elogne ajouté
+2026-06-30 15:49:57,158 [INFO] Table teachers créée
+2026-06-30 15:49:57,160 [INFO] Table users créée

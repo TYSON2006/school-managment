@@ -1,37 +1,46 @@
 from models.students_models import students_using
+from models.users_models import globaUsers
 from config.menu import menu_students as texte_menu_students
 
 def menu_students():
-    db = students_using()
+    db          = students_using()
+    db_users    = globaUsers()
 
     while True:
         print(texte_menu_students)
-
         choix = input("Faites un choix : ").strip()
 
         if choix == '1':
-            nom       = input("Nom : ")
-            prenom    = input("Prénom : ")
+            # Etape 1 — créer dans users
+            print("\n--- Création du compte utilisateur ---")
+            nom       = input("Nom : ").strip()
+            pseudo = input("pseudo :").strip()
+            passeword = input("Mot de passe : ").strip()
+            db_users.ajouter(nom, pseudo,passeword, 'student')
+            user_id = db_users.dernier_id()
+
+            # Etape 2 — compléter dans students
+            print("\n--- Informations de l'étudiant ---")
+            prenom    = input("Prénom : ").strip()
             age       = int(input("Âge : "))
-            matricule = input("Matricule : ")
-            classe    = input("Classe : ")
-            user_id = int(input("user_id :"))
-            db.ajouter(nom, prenom, age, matricule, classe,user_id)
+            matricule = input("Matricule : ").strip()
+            classe    = input("Classe : ").strip()
+            db.ajouter(user_id, nom, prenom, age, matricule, classe)
 
         elif choix == '2':
             resultat = db.afficher()
             if not resultat:
                 print("Aucun étudiant trouvé!")
             else:
-                for row in resultat:        # ← etudiant → row
+                for row in resultat:
                     print(f"""
         ID        : {row[0]}
-        Matricule : {row[1]}
-        Nom       : {row[2]}
-        Prénom    : {row[3]}
-        Âge       : {row[4]}
-        Classe    : {row[5]}
-        user_id   : {row[6]} 
+        User ID   : {row[1]}
+        Matricule : {row[2]}
+        Nom       : {row[3]}
+        Prénom    : {row[4]}
+        Âge       : {row[5]}
+        Classe    : {row[6]}
                     """)
 
         elif choix == '3':
@@ -40,20 +49,20 @@ def menu_students():
             if etudiant:
                 print(f"""
         ID        : {etudiant[0]}
-        Matricule : {etudiant[1]}
-        Nom       : {etudiant[2]}
-        Prénom    : {etudiant[3]}
-        Âge       : {etudiant[4]}
-        Classe    : {etudiant[5]}
+        Matricule : {etudiant[2]}
+        Nom       : {etudiant[3]}
+        Prénom    : {etudiant[4]}
+        Âge       : {etudiant[5]}
+        Classe    : {etudiant[6]}
                 """)
             else:
                 print("Aucun étudiant trouvé!")
 
         elif choix == '4':
             id        = int(input("ID à modifier : "))
-            nom       = input("Nouveau nom : ")
+            nom       = input("Nouveau nom : ").strip()
             age       = int(input("Nouvel âge : "))
-            matricule = input("Nouveau matricule : ")
+            matricule = input("Nouveau matricule : ").strip()
             db.modifier(id, nom, age, matricule)
 
         elif choix == '5':

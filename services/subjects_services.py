@@ -2,8 +2,7 @@ from models.subjects_models import subject_using
 from config.menu import menu_subjects as texte_menu_subjects
 
 def menu_subject():
-    db = subject_using()                   # ← parenthèses manquaient
-
+    db = subject_using()                 
     while True:
         print(texte_menu_subjects)
 
@@ -12,7 +11,7 @@ def menu_subject():
         if choix == '1':
             nom        = input("Nom de la matière : ").strip()
             teacher_id = int(input("ID du professeur : "))
-            db.ajouter(nom, teacher_id)    # ← ajout → ajouter + teacher_id ajouté
+            db.ajouter(nom, teacher_id)    
 
         elif choix == '2':
             resultat = db.afficher()

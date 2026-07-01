@@ -1,32 +1,49 @@
-from models.students_models import students_using
-from models.teachers_models import Teach_using
 from models.users_models import globaUsers
 
 
-class gestion:
-    def __init__(self):
-        self.students=students_using()
-        self.teachers=Teach_using()
-        self.users=globaUsers()
+def menu_users():
+    db = globaUsers()
 
 
-
-
-
-
-menu_utilisateur = """
+    while True :
+        print("""
 =========================================
-      GESTION D'UTILISATEURS
+        GESTION DES UTILISATEURS
 =========================================
-
-     Bienvenue dans le module de
-       gestion des utilisateurs
-
+  1. Afficher tous les utilisateurs
+  2. Modifier le rôle d'un utilisateur et pseudo
+  3. Supprimer un utilisateur
+  0. Retour
 =========================================
-"""
+              """)
+        choix = input("faite un choix :").strip()
 
-def ajout_users(self,nom,prenom):
-    nom = input("nom:")
-    prenom = input("prenom:") 
+        if choix == '1':
+            resultats = db.afficher()
+            if not resultats:
+                print("aucun resultat trouvé!")
+            else:
+                for row in resultats:
+                    print("""
+                    id : {row[0]}
+                    nom : {row[1]}
+                    pseudo : {row[2]}
+                    role : {row[3]}
+                          """)
+        elif choix == '2':
+            id = int (input("id de l'user :"))
+            nom = input("nom :")
+            pseudo = input("nouveau pseudo :")
+            role = input("nouveau role (admin/student/teachers) : ").strip()
+            db.modifier(id,nom,pseudo , role)
+        
+        elif  choix == '3':
+            id = int(input("id à supprimer"))
+            db.supprimer(id)
+
+        elif choix == '0':
+            break
+        else:
+            print("choix invalide")
 
     

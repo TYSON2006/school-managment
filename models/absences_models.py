@@ -31,7 +31,7 @@ class absences_using(MESDONNÉES):
             """, (student_id, date, status))
             self.connexion.commit()
             logger.info("Absence ajoutée")
-            print("Absence ajoutée ✅")
+            print("Absence ajoutée ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -61,7 +61,7 @@ class absences_using(MESDONNÉES):
             """, (status, id))
             self.connexion.commit()
             logger.info("Absence mise à jour")
-            print("Statut mis à jour ✅")
+            print("Statut mis à jour ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 
@@ -72,6 +72,6 @@ class absences_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Absence supprimée")
-            print("Absence supprimée ✅")
+            print("Absence supprimée ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)

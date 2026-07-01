@@ -33,7 +33,7 @@ class grades_using(MESDONNÉES):
                 VALUES (?, ?, ?)
             """, (students_id, subjects_id, notes))
             self.connexion.commit()
-            print("Note ajoutée ✅")
+            print("Note ajoutée ")
             logger.info("Note %s ajoutée", notes)
             return True
         except Exception as e:
@@ -65,7 +65,7 @@ class grades_using(MESDONNÉES):
             """, (notes, id))
             self.connexion.commit()
             logger.info("Note modifiée")
-            print("Note modifiée ✅")
+            print("Note modifiée ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 
@@ -76,7 +76,7 @@ class grades_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Note supprimée")
-            print("Note supprimée ✅")
+            print("Note supprimée ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
 

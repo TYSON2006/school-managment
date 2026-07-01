@@ -34,21 +34,21 @@ class students_using(MESDONNÉES):
             """, (user_id, matricule, nom, prenom, age, classe))
             self.connexion.commit()
             logger.info("Étudiant %s ajouté", nom)
-            print("Étudiant ajouté ✅")
+            print("Étudiant ajouté ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
 
-    def modifier(self, id, nom, age, matricule):
+    def modifier(self, id, pseudo,nom, age, matricule):
         try:
             self.curseur.execute("""
                 UPDATE students
-                SET nom = ?, age = ?, matricule = ?
+                SET nom = ?, age = ?, matricule = ?, pseudo= ?
                 WHERE id = ?
             """, (nom, age, matricule, id))
             self.connexion.commit()
             logger.info("Étudiant %s modifié", id)
-            print("Étudiant modifié ✅")
+            print("Étudiant modifié ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -76,7 +76,7 @@ class students_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Étudiant %s supprimé", id)
-            print("Étudiant supprimé ✅")
+            print("Étudiant supprimé ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")

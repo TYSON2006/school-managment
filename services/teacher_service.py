@@ -11,7 +11,7 @@ def menu_teachers():
         choix = input("Faites un choix : ").strip()
 
         if choix == '1':
-            # Etape 1 — créer dans users
+           
             print("\n--- Création du compte utilisateur ---")
             nom       = input("Nom : ").strip()
             pseudo = input("pseudo :").strip()
@@ -19,7 +19,7 @@ def menu_teachers():
             db_users.ajouter(nom, pseudo,passeword, 'teachers')
             user_id = db_users.dernier_id()
 
-            # Etape 2 — compléter dans teachers
+           
             print("\n--- Informations du professeur ---")
             matiere = input("Matière enseignée : ").strip()
             db.ajout(user_id, nom, matiere)

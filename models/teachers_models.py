@@ -31,7 +31,7 @@ class Teach_using(MESDONNÉES):
             """, (user_id, nom, matiere))
             self.connexion.commit()
             logger.info("Professeur %s ajouté", nom)
-            print("Professeur ajouté ✅")
+            print("Professeur ajouté ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -52,7 +52,7 @@ class Teach_using(MESDONNÉES):
             """, (nom, matiere, id))
             self.connexion.commit()
             logger.info("Professeur %s modifié", id)
-            print("Professeur modifié ✅")
+            print("Professeur modifié ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")
@@ -73,7 +73,7 @@ class Teach_using(MESDONNÉES):
             """, (id,))
             self.connexion.commit()
             logger.info("Professeur %s supprimé", id)
-            print("Professeur supprimé ✅")
+            print("Professeur supprimé ")
         except Exception as e:
             logger.error("Erreur base de données : %s", e)
             print("Une erreur est survenue.")

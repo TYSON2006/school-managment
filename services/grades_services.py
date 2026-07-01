@@ -37,23 +37,23 @@ def menu_grades():
         Étudiant ID : {resultat[1]}
         Matière ID  : {resultat[2]}
         Note        : {resultat[3]}
-                """)                       # ← index corrigés
+                """)                       
             else:
                 print("Aucun résultat trouvé!")
 
         elif choix == '4':
-            id   = int(input("ID à modifier : "))    # ← int manquait
+            id   = int(input("ID à modifier : "))    
             note = float(input("Nouvelle note (0-20) : "))
             db.modifier(id, note)
 
         elif choix == '5':
-            id = int(input("ID à supprimer : "))     # ← int + db.supprimer manquait
+            id = int(input("ID à supprimer : "))     
             db.supprimer(id)
 
         elif choix == '6':
             student_id = int(input("ID de l'étudiant : "))
-            moyenne    = db.calculer(student_id)     # ← students_id → student_id
-            print(f"Moyenne de l'étudiant ID {student_id} : {moyenne:.2f}/20")  # ← syntaxe corrigée
+            moyenne    = db.calculer(student_id)     
+            print(f"Moyenne de l'étudiant ID {student_id} : {moyenne:.2f}/20") 
 
         elif choix == '0':
             break

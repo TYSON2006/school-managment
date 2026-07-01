@@ -29,7 +29,7 @@ def menu_stats():
                 """)
                 resultat = db.curseur.fetchone()
                 if resultat:
-                    # récupérer le nom de l'étudiant
+                   
                     db.curseur.execute("""
                         SELECT nom, prenom FROM students WHERE id = ?
                     """, (resultat[0],))

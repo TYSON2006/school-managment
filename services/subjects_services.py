@@ -18,7 +18,7 @@ def menu_subject():
             if not resultat:
                 print("Aucune matière trouvée!")
             else:
-                for row in resultat:       # ← resultat → row dans la boucle
+                for row in resultat:      
                     print(f"""
         ID            : {row[0]}
         Matière       : {row[1]}
@@ -26,7 +26,7 @@ def menu_subject():
                     """)
 
         elif choix == '3':
-            id       = int(input("ID de la matière à rechercher : "))  # ← int
+            id       = int(input("ID de la matière à rechercher : ")) 
             resultat = db.rechercher(id)
             if resultat:
                 print(f"""
@@ -38,8 +38,8 @@ def menu_subject():
                 print("Matière non trouvée!")
 
         elif choix == '4':
-            id = int(input("ID de la matière à supprimer : "))  # ← int
-            db.supprimer(id)               # ← appel correct
+            id = int(input("ID de la matière à supprimer : "))  
+            db.supprimer(id)              
 
         elif choix == '0':
             break

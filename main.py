@@ -5,6 +5,7 @@ from services.subjects_services import menu_subject
 from services.grades_services import menu_grades
 from services.absences_services import menu_absences
 from services.stats_services import menu_stats
+from services.users_gestions import  menu_users
 import logging
 def main():
     role = connet_users()
@@ -24,6 +25,8 @@ def main():
   4. Gestion des notes
   5. Gestion des absences
   6. Statistiques
+ 7. Gestion des utilisateurs
+
   0. Quitter
 =========================================
             """)
@@ -41,6 +44,8 @@ def main():
                 menu_absences()
             elif choix == '6':
                 menu_stats()
+            elif choix == '7':
+                menu_users()
             elif choix == '0':
                 print("Merci d'être passé!")
                 break

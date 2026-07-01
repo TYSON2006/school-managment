@@ -122,3 +122,18 @@ menu_stats = """
   0. Retour
 =========================================
         """
+
+
+
+
+menu_users = """
+
+=========================================
+        GESTION DES UTILISATEURS
+=========================================
+  1. Afficher tous les utilisateurs
+  2. Modifier le rôle d'un utilisateur et pseudo
+  3. Supprimer un utilisateur
+  0. Retour
+=========================================
+        """
